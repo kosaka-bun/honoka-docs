@@ -53,3 +53,32 @@
 目前，用户的种子背包、果实背包、每个地区的商店商品数、每个地区的土地可容纳的作物数<strong>均为10</strong>。
 
 用户浇水可用水量最大值为200。
+
+### 水量消耗与天气的关系
+```java
+private static final Map<String, Integer> waterDecMap = new HashMap<>() {{
+    put("晴", 20); put("阴", 10); put("多云", 15); put("阵雨", 5);
+    put("小雨", 0); put("中雨", -10); put("大雨", -20); put("暴雨", -30);
+    put("雨夹雪", 0); put("小雪", 0); put("中雪", -10); put("大雪", -20);
+}};
+```
+
+### 生长质量消耗与天气的关系
+```java
+private static final Map<String, Integer> qualityDecMap = new HashMap<>() {{
+    put("大雨", 20); put("暴雨", 30);
+    put("中雪", 10); put("大雪", 20);
+}};
+```
+
+### 生长质量消耗与地形与季节的关系
+```java
+//判断季节
+Random ra = new Random();
+if(!crop.type.season.equals(Season.getSeason(new Date())))
+    dec += ra.nextInt(11) + 5;
+//判断地形
+if(!crop.location.landform.equals(crop.type.landform))
+    dec += ra.nextInt(11) + 5;
+```
+作物处在不适宜的季节与不适宜的地形时，每次生长随机消耗5~15的生长质量，不适宜的季节与地形可以叠加。
