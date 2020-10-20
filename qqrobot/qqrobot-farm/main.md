@@ -66,7 +66,7 @@ private static final Map<String, Integer> waterDecMap = new HashMap<>() {{
 ### 生长质量消耗与天气的关系
 ```java
 private static final Map<String, Integer> qualityDecMap = new HashMap<>() {{
-    put("大雨", 20); put("暴雨", 30);
+    put("大雨", 10); put("暴雨", 20);
     put("中雪", 10); put("大雪", 20);
 }};
 ```
