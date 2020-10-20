@@ -45,7 +45,7 @@
 ### 天气刷新
 每10分钟一次，分别在每个小时的5、15、25、35、45、55分进行。
 ### 作物生长
-作物每10分钟消耗一次水，每40分钟提升一次等级，当作物达到6级时即可收获。
+作物每10分钟消耗一次水，每40分钟提升一次等级，当作物达到6级时即可收获，即从播种到收获，大约需要200分钟（3小时20分钟）。
 
 分别在每个小时的0、10、20、30、40、50分进行。
 
@@ -76,12 +76,12 @@ private static final Map<String, Integer> qualityDecMap = new HashMap<>() {{
 //判断季节
 Random ra = new Random();
 if(!crop.type.season.equals(Season.getSeason(new Date())))
-    dec += ra.nextInt(11) + 5;
+    dec += ra.nextInt(9);
 //判断地形
 if(!crop.location.landform.equals(crop.type.landform))
-    dec += ra.nextInt(11) + 5;
+    dec += ra.nextInt(9);
 ```
-作物处在不适宜的季节与不适宜的地形时，每次生长随机消耗5~15的生长质量，不适宜的季节与地形产生的消耗可以叠加。
+作物处在不适宜的季节与不适宜的地形时，每次生长随机消耗0~8的生长质量，不适宜的季节与地形产生的消耗可以叠加。
 
 ## 暂未实现的功能
 - 火车票
