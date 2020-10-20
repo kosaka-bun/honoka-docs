@@ -76,12 +76,12 @@ private static final Map<String, Integer> qualityDecMap = new HashMap<>() {{
 //判断季节
 Random ra = new Random();
 if(!crop.type.season.equals(Season.getSeason(new Date())))
-    dec += ra.nextInt(9);
+    dec += ra.nextInt(10) + 1;
 //判断地形
 if(!crop.location.landform.equals(crop.type.landform))
-    dec += ra.nextInt(9);
+    dec += ra.nextInt(10) + 1;
 ```
-作物处在不适宜的季节与不适宜的地形时，每次生长随机消耗0~8的生长质量，不适宜的季节与地形产生的消耗可以叠加。
+作物处在不适宜的季节与不适宜的地形时，每次生长随机消耗1~10的生长质量，不适宜的季节与地形产生的消耗可以叠加。
 
 ## 暂未实现的功能
 - 火车票
